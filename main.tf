@@ -1,51 +1,49 @@
-#############################
-##creating bucket for s3 backend
-#########################
+# #############################
+# ##creating bucket for s3 backend
+# #########################
 
-# This is used to store terraform state file, so it can be accessible to a collaborative team
-
-
-# Note: The bucket name may not work for you since buckets are unique globally in AWS, so you must give it a unique name.
-resource "aws_s3_bucket" "terraform_state" {
-  bucket = "emy-dev-terraform-bucket"
-}
+# # This is used to store terraform state file, so it can be accessible to a collaborative team
 
 
-# Enable versioning so we can see the full revision history of our state files
-
-resource "aws_s3_bucket_versioning" "versioning_enabling" {
-  bucket = aws_s3_bucket.terraform_state.id
-  versioning_configuration {
-    status = "Enabled"
-  }
-}
+# # Note: The bucket name may not work for you since buckets are unique globally in AWS, so you must give it a unique name.
+# resource "aws_s3_bucket" "terraform_state" {
+#   bucket = "emy-dev-terraform-bucket"
+# }
 
 
-# Enable server-side encryption by default
+# # Enable versioning so we can see the full revision history of our state files
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "bucket-encryption" {
-  bucket = aws_s3_bucket.terraform_state.id
-
-  rule {
-    apply_server_side_encryption_by_default {
-      sse_algorithm = "AES256"
-    }
-  }
-}
+# resource "aws_s3_bucket_versioning" "versioning_enabling" {
+#   bucket = aws_s3_bucket.terraform_state.id
+#   versioning_configuration {
+#     status = "Enabled"
+#   }
+# }
 
 
-# create dynamoDB for lockstate files
-resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "terraform-locks"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "LockID"
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-}
+# # Enable server-side encryption by default
+
+# resource "aws_s3_bucket_server_side_encryption_configuration" "bucket-encryption" {
+#   bucket = aws_s3_bucket.terraform_state.id
+
+#   rule {
+#     apply_server_side_encryption_by_default {
+#       sse_algorithm = "AES256"
+#     }
+#   }
+# }
 
 
+# # create dynamoDB for lockstate files
+# resource "aws_dynamodb_table" "terraform_locks" {
+#   name         = "terraform-locks"
+#   billing_mode = "PAY_PER_REQUEST"
+#   hash_key     = "LockID"
+#   attribute {
+#     name = "LockID"
+#     type = "S"
+#   }
+# }
 
 
 # creating VPC

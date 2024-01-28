@@ -49,8 +49,11 @@ variable "tags" {
 
 
 variable "name" {
-    type = string
-    description = "name of the loadbalancer"
+  type        = string
+  description = "name of the loadbalancer"
+}
+
+variable "aws_vpc" {
   
 }
 
