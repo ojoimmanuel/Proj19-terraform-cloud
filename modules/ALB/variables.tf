@@ -53,7 +53,4 @@ variable "name" {
   description = "name of the loadbalancer"
 }
 
-variable "aws_vpc" {
-  
-}
 
