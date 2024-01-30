@@ -26,6 +26,7 @@ resource "aws_db_instance" "emydevops-rds" {
   parameter_group_name   = "default.mysql5.7"
   db_subnet_group_name   = aws_db_subnet_group.emydevops-rds.name
   skip_final_snapshot    = true
-  vpc_security_group_ids = [aws_security_group.datalayer-sg.id]
+  vpc_security_group_ids = var.db-sg
+  # vpc_security_group_ids = [aws_security_group.datalayer-sg.id]
   multi_az               = "true"
 }
