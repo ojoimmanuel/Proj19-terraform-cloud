@@ -66,3 +66,8 @@ variable "master-password" {
   type        = string
   description = "rds master password"
 }
+
+variable "available_az" {
+  default = "data.aws_availability_zones.available-zones.names"
+
+}

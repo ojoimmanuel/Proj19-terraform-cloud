@@ -95,7 +95,7 @@ variable "name" {
   default = "emydevops"
 }
 
-variable "avail_az" {
+variable "available_az" {
   
 }
 

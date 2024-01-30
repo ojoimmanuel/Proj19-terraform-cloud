@@ -49,7 +49,7 @@ resource "aws_launch_template" "bastion-launch-template" {
   # }
 
   placement {
-    availability_zone = var.avail_az
+    availability_zone = var.available_az
   }
 
   lifecycle {
@@ -124,7 +124,7 @@ resource "aws_launch_template" "nginx-launch-template" {
   # }
 
   placement {
-    availability_zone = var.avail_az
+    availability_zone = var.available_az
   }
 
   lifecycle {

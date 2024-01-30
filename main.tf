@@ -58,6 +58,7 @@ module "VPC" {
   preferred_number_of_private_subnets = var.preferred_number_of_private_subnets
   private_subnets                     = [for i in range(1, 8, 2) : cidrsubnet(var.vpc_cidr, 8, i)]
   public_subnets                      = [for i in range(2, 5, 2) : cidrsubnet(var.vpc_cidr, 8, i)]
+  available_az = var.available_az
 }
 
 #Module for Application Load balancer, this will create Extenal Load balancer and internal load balancer
@@ -99,7 +100,7 @@ module "AutoScaling" {
   public_subnets    = [module.VPC.public_subnets-1, module.VPC.public_subnets-2]
   private_subnets   = [module.VPC.private_subnets-1, module.VPC.private_subnets-2]
   keypair           = var.keypair
-  avail_az = var.region
+  available_az = var.available_az
 
 }
 

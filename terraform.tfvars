@@ -32,3 +32,5 @@ account_no = 635977375707
 master-username = "emydevops"
 
 master-password = "proj17pbl"
+
+available_az = "data.aws_availability_zones.available-zones.names"

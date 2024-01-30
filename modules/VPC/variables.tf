@@ -54,4 +54,6 @@ variable "environment" {
   default = "true"
 }
 
-
+variable "available_az" {
+  
+}

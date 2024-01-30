@@ -19,7 +19,7 @@ resource "aws_launch_template" "wordpress-launch-template" {
   # }
 
   placement {
-    availability_zone = var.avail_az
+    availability_zone = var.available_az
   }
   lifecycle {
     create_before_destroy = true
@@ -98,7 +98,7 @@ resource "aws_launch_template" "tooling-launch-template" {
   # }
 
   placement {
-    availability_zone = var.avail_az
+    availability_zone = var.available_az
   }
 
   lifecycle {

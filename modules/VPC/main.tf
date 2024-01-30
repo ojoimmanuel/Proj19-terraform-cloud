@@ -21,7 +21,8 @@ resource "aws_vpc" "main" {
 
 # create a random resource to allow shuffling of all avaialbility zones, to give room for more subnets
 resource "random_shuffle" "az_list" {
-  input = data.aws_availability_zones.available-zones.names
+  # input = data.aws_availability_zones.available-zones.names
+  input = var.available_az
 }
 
 
