@@ -2,8 +2,8 @@
 resource "aws_db_subnet_group" "emydevops-rds" {
   name       = "emydevops-rds"
   # subnet_ids = [aws_subnet.private[2].id, aws_subnet.private[3].id]
-  subnet_ids = [ var.private_subnets ]
-  
+  subnet_ids = var.private_subnets
+
   tags = merge(
     var.tags,
     {

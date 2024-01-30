@@ -72,7 +72,7 @@ resource "aws_autoscaling_group" "wordpress-asg" {
 resource "aws_autoscaling_attachment" "asg_attachment_wordpress" {
   autoscaling_group_name = aws_autoscaling_group.wordpress-asg.id
   # lb_target_group_arn    = aws_lb_target_group.wordpress-tgt.arn
-  lb_target_group_arn    = var.wordpress-tgt.arn
+  lb_target_group_arn    = var.wordpress-alb-tgt.arn
 }
 
 
@@ -126,11 +126,13 @@ resource "aws_autoscaling_group" "tooling-asg" {
   health_check_type         = "ELB"
   desired_capacity          = 1
 
-  vpc_zone_identifier = [
+  # vpc_zone_identifier = [
 
-    aws_subnet.private[0].id,
-    aws_subnet.private[1].id
-  ]
+  #   aws_subnet.private[0].id,
+  #   aws_subnet.private[1].id
+  # ]
+
+  vpc_zone_identifier = var.private_subnets
 
   launch_template {
     id      = aws_launch_template.tooling-launch-template.id
