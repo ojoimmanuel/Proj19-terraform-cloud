@@ -65,7 +65,7 @@ resource "aws_launch_template" "bastion-launch-template" {
 
 
   # create a file called bastion.sh and copy the bastion userdata from project 15 into it
-  user_data = filebase64("${path.module}/bastion.sh")
+  # user_data = filebase64("${path.module}/bastion.sh")
 }
 
 
@@ -135,7 +135,7 @@ resource "aws_launch_template" "nginx-launch-template" {
   }
 
   # create a file called nginx.sh and copy the nginx userdata from project 15 into it
-  user_data = filebase64("${path.module}/nginx.sh")
+  # user_data = filebase64("${path.module}/nginx.sh")
 }
 
 

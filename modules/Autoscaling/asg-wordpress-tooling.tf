@@ -35,7 +35,7 @@ resource "aws_launch_template" "wordpress-launch-template" {
   }
 
   # create a file called wordpress.sh and copy the wordpress userdata from project 15 into it.
-  user_data = filebase64("${path.module}/wordpress.sh")
+  # user_data = filebase64("${path.module}/wordpress.sh")
 }
 
 
@@ -111,7 +111,7 @@ resource "aws_launch_template" "tooling-launch-template" {
   }
 
   # create a file called tooling.sh and copy the tooling userdata from project 15 into it
-  user_data = filebase64("${path.module}/tooling.sh")
+  # user_data = filebase64("${path.module}/tooling.sh")
 }
 
 
