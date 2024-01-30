@@ -44,8 +44,12 @@ resource "aws_launch_template" "bastion-launch-template" {
 
   key_name = var.keypair
 
+  # placement {
+  #   availability_zone = "random_shuffle.az_list.result"
+  # }
+
   placement {
-    availability_zone = "random_shuffle.az_list.result"
+    availability_zone = var.avail_az
   }
 
   lifecycle {
@@ -115,8 +119,12 @@ resource "aws_launch_template" "nginx-launch-template" {
 
   key_name = var.keypair
 
+  # placement {
+  #   availability_zone = "random_shuffle.az_list.result"
+  # }
+
   placement {
-    availability_zone = "random_shuffle.az_list.result"
+    availability_zone = var.avail_az
   }
 
   lifecycle {

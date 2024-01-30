@@ -14,10 +14,13 @@ resource "aws_launch_template" "wordpress-launch-template" {
   key_name = var.keypair
 
 
-  placement {
-    availability_zone = "random_shuffle.az_list.result"
-  }
+  # placement {
+  #   availability_zone = "random_shuffle.az_list.result"
+  # }
 
+  placement {
+    availability_zone = var.avail_az
+  }
   lifecycle {
     create_before_destroy = true
   }
@@ -90,8 +93,12 @@ resource "aws_launch_template" "tooling-launch-template" {
   key_name = var.keypair
 
 
+  # placement {
+  #   availability_zone = "random_shuffle.az_list.result"
+  # }
+
   placement {
-    availability_zone = "random_shuffle.az_list.result"
+    availability_zone = var.avail_az
   }
 
   lifecycle {
