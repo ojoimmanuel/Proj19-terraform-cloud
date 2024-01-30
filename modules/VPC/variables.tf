@@ -58,6 +58,6 @@ variable "available_az" {
 
 }
 
-variable "available" {
-  
+variable "aws_availability_zones" {
+
 }

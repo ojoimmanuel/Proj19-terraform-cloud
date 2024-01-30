@@ -59,7 +59,7 @@ module "VPC" {
   private_subnets                     = [for i in range(1, 8, 2) : cidrsubnet(var.vpc_cidr, 8, i)]
   public_subnets                      = [for i in range(2, 5, 2) : cidrsubnet(var.vpc_cidr, 8, i)]
   available_az = var.available_az
-  available = "available"
+  aws_availability_zones = "aws_availability_zones"
 }
 
 #Module for Application Load balancer, this will create Extenal Load balancer and internal load balancer
