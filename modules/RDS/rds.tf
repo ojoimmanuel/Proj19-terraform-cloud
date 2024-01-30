@@ -1,8 +1,9 @@
 # This section will create the subnet group for the RDS instance using the private subnet
 resource "aws_db_subnet_group" "emydevops-rds" {
   name       = "emydevops-rds"
-  subnet_ids = [aws_subnet.private[2].id, aws_subnet.private[3].id]
-
+  # subnet_ids = [aws_subnet.private[2].id, aws_subnet.private[3].id]
+  subnet_ids = [ var.private_subnets ]
+  
   tags = merge(
     var.tags,
     {

@@ -94,3 +94,7 @@ variable "name" {
   type    = string
   default = "emydevops"
 }
+
+variable "avail_az" {
+  
+}

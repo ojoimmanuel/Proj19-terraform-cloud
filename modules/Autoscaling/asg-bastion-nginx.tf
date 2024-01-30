@@ -24,7 +24,8 @@ resource "aws_autoscaling_notification" "emy_notifications" {
 
 
 resource "random_shuffle" "az_list" {
-  input = data.aws_availability_zones.available.names
+  # input = data.aws_availability_zones.available.names
+  input = var.avail_az
 }
 
 
@@ -33,8 +34,8 @@ resource "random_shuffle" "az_list" {
 resource "aws_launch_template" "bastion-launch-template" {
   image_id               = var.ami-bastion
   instance_type          = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.bastion_sg.id]
-
+  # vpc_security_group_ids = [aws_security_group.bastion_sg.id]
+  vpc_security_group_ids = [ var.bastion-sg ]
   iam_instance_profile {
     # name = aws_iam_instance_profile.ip.id
     name = var.instance_profile
@@ -103,8 +104,8 @@ resource "aws_autoscaling_group" "bastion-asg" {
 resource "aws_launch_template" "nginx-launch-template" {
   image_id               = var.ami-nginx
   instance_type          = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.nginx-sg.id]
-
+  # vpc_security_group_ids = [aws_security_group.nginx-sg.id]
+  vpc_security_group_ids = var.nginx-sg
   iam_instance_profile {
     # name = aws_iam_instance_profile.ip.id
     name = var.instance_profile

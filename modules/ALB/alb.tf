@@ -5,10 +5,12 @@ resource "aws_lb" "ext-alb" {
     aws_security_group.ext-alb-sg.id,
   ]
 
-  subnets = [
-    aws_subnet.public[0].id,
-    aws_subnet.public[1].id
-  ]
+  # subnets = [
+  #   aws_subnet.public[0].id,
+  #   aws_subnet.public[1].id
+  # ]
+
+  subnets = [var.public-sbn-1,var.public-sbn-2]
 
   tags = merge(
     var.tags,
@@ -59,15 +61,19 @@ resource "aws_lb_listener" "nginx-listner" {
 resource "aws_lb" "ialb" {
   name     = "ialb"
   internal = true
-  security_groups = [
-    aws_security_group.int-alb-sg.id,
-  ]
+  # security_groups = [
+  #   aws_security_group.int-alb-sg.id,
+  # ]
 
-  subnets = [
-    aws_subnet.private[0].id,
-    aws_subnet.private[1].id
-  ]
+  security_groups = [ var.private-sg ]
 
+  # subnets = [
+  #   aws_subnet.private[0].id,
+  #   aws_subnet.private[1].id
+  # ]
+
+  subnets = [var.private-sbn-1,var.private-sbn-2]
+  
   tags = merge(
     var.tags,
     {
