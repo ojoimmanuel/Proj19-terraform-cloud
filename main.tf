@@ -99,6 +99,7 @@ module "AutoScaling" {
   public_subnets    = [module.VPC.public_subnets-1, module.VPC.public_subnets-2]
   private_subnets   = [module.VPC.private_subnets-1, module.VPC.private_subnets-2]
   keypair           = var.keypair
+  avail_az = data.aws_availability_zones.available.names
 
 }
 
