@@ -66,3 +66,7 @@ variable "master-password" {
   type        = string
   description = "rds master password"
 }
+
+variable "aws_az" {
+  
+}

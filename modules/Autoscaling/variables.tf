@@ -98,3 +98,4 @@ variable "name" {
 variable "avail_az" {
   
 }
+
