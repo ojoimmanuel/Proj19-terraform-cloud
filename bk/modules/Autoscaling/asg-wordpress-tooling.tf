@@ -69,8 +69,7 @@ resource "aws_autoscaling_group" "wordpress-asg" {
 # attaching autoscaling group of wordpress application to internal loadbalancer
 resource "aws_autoscaling_attachment" "asg_attachment_wordpress" {
   autoscaling_group_name = aws_autoscaling_group.wordpress-asg.id
-  # lb_target_group_arn    = aws_lb_target_group.wordpress-tgt.arn
-  lb_target_group_arn    = var.wordpress-tgt.arn
+  lb_target_group_arn    = aws_lb_target_group.wordpress-tgt.arn
 }
 
 
@@ -144,6 +143,5 @@ resource "aws_autoscaling_group" "tooling-asg" {
 # attaching autoscaling group of  tooling application to internal loadbalancer
 resource "aws_autoscaling_attachment" "asg_attachment_tooling" {
   autoscaling_group_name = aws_autoscaling_group.tooling-asg.id
-  # lb_target_group_arn    = aws_lb_target_group.tooling-tgt.arn
-  lb_target_group_arn    = var.tooling-tgt.arn
+  lb_target_group_arn    = aws_lb_target_group.tooling-tgt.arn
 }
