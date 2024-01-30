@@ -55,5 +55,9 @@ variable "environment" {
 }
 
 variable "available_az" {
+
+}
+
+variable "available" {
   
 }
