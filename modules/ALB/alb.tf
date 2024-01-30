@@ -1,9 +1,10 @@
 resource "aws_lb" "ext-alb" {
   name     = "ext-alb"
   internal = false
-  security_groups = [
-    aws_security_group.ext-alb-sg.id,
-  ]
+  # security_groups = [
+  #   aws_security_group.ext-alb-sg.id,
+  # ]
+  security_groups = var.public-sg
 
   # subnets = [
   #   aws_subnet.public[0].id,
@@ -73,7 +74,7 @@ resource "aws_lb" "ialb" {
   # ]
 
   subnets = [var.private-sbn-1,var.private-sbn-2]
-  
+
   tags = merge(
     var.tags,
     {

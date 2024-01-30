@@ -35,7 +35,7 @@ resource "aws_launch_template" "bastion-launch-template" {
   image_id               = var.ami-bastion
   instance_type          = "t2.micro"
   # vpc_security_group_ids = [aws_security_group.bastion_sg.id]
-  vpc_security_group_ids = [ var.bastion-sg ]
+  vpc_security_group_ids = var.bastion-sg
   iam_instance_profile {
     # name = aws_iam_instance_profile.ip.id
     name = var.instance_profile
@@ -147,10 +147,12 @@ resource "aws_autoscaling_group" "nginx-asg" {
   health_check_type         = "ELB"
   desired_capacity          = 1
 
-  vpc_zone_identifier = [
-    aws_subnet.public[0].id,
-    aws_subnet.public[1].id
-  ]
+  # vpc_zone_identifier = [
+  #   aws_subnet.public[0].id,
+  #   aws_subnet.public[1].id
+  # ]
+
+  vpc_zone_identifier = var.public_subnets
 
   launch_template {
     id      = aws_launch_template.nginx-launch-template.id
