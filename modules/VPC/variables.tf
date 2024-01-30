@@ -57,7 +57,3 @@ variable "environment" {
 variable "available_az" {
 
 }
-
-variable "aws_availability_zones" {
-
-}
