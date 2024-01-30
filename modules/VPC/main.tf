@@ -1,5 +1,5 @@
 # Get list of availability zones
-data "aws_availability_zones" "available" {
+data "aws_availability_zones" "available-zones" {
   state = "available"
 }
 
@@ -17,6 +17,11 @@ resource "aws_vpc" "main" {
       Name = format("%s-VPC", var.name)
     },
   )
+}
+
+# create a random resource to allow shuffling of all avaialbility zones, to give room for more subnets
+resource "random_shuffle" "az_list" {
+  input = data.aws_availability_zones.available-zones.names
 }
 
 

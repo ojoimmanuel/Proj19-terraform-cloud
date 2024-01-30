@@ -23,10 +23,10 @@ resource "aws_autoscaling_notification" "emy_notifications" {
 }
 
 
-resource "random_shuffle" "az_list" {
-  # input = data.aws_availability_zones.available.names
-  input = var.avail_az
-}
+# resource "random_shuffle" "az_list" {
+#   # input = data.aws_availability_zones.available.names
+#   input = var.avail_az
+# }
 
 
 # launch template for bastion
