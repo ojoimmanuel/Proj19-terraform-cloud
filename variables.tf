@@ -1,16 +1,16 @@
-variable "name" {
-  type    = string
-  default = "emydevops"
-}
+#--- root/variables.tf---
+# values for db-password, db-username, region, vpc_cidr, account no have been specified int the terraform 
+# cloud console as a variable
 
-variable "region" {
-  default = "us-east-1"
-}
+# you can add your own password or update the terrafrom cloud to do so
 
-variable "vpc_cidr" {
-  default = "172.16.0.0/16"
-}
+variable "region" {}
 
+variable "vpc_cidr" {}
+
+variable "db-password" {}
+
+variable "db-username" {}
 
 variable "enable_dns_support" {
   default = "true"
@@ -28,46 +28,13 @@ variable "enable_classiclink_dns_support" {
   default = "false"
 }
 
-variable "preferred_number_of_public_subnets" {
-  default = 2
-}
+variable "account_no" {}
 
-variable "preferred_number_of_private_subnets" {
-  default = 4
-}
+variable "keypair" {}
 
-variable "tags" {
-  description = "A mapping of tags to assign to all resources."
-  type        = map(string)
-  default     = {}
-}
+variable "ami-web" {}
 
-variable "ami" {
-  type        = string
-  description = "AMI for launch templates"
-}
+variable "ami-bastion" {}
 
-variable "keypair" {
-  type        = string
-  description = "keypair for instance"
-}
+variable "ami-nginx" {}
 
-variable "account_no" {
-  type        = number
-  description = "the account no"
-}
-
-variable "master-username" {
-  type        = string
-  description = "rds master username"
-}
-
-variable "master-password" {
-  type        = string
-  description = "rds master password"
-}
-
-variable "available_az" {
-  default = "data.aws_availability_zones.available-zones.names"
-
-}

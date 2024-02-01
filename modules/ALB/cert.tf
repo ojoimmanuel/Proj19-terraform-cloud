@@ -1,6 +1,6 @@
-# The entire section creates a certificate, public zone, and validates the certificate using DNS method.
+# The entire section create a certiface, public zone, and validate the certificate using DNS method
 
-# Create the certificate using a wildcard for all the domains created in oyindamola.gq
+# Create the certificate
 resource "aws_acm_certificate" "emydevops" {
   domain_name       = "*.emydevops.online"
   validation_method = "DNS"
@@ -36,29 +36,29 @@ resource "aws_acm_certificate_validation" "emydevops" {
   validation_record_fqdns = [for record in aws_route53_record.emydevops : record.fqdn]
 }
 
-# create records for tooling
+# create record for tooling
 resource "aws_route53_record" "tooling" {
   zone_id = data.aws_route53_zone.emydevops.zone_id
   name    = "tooling.emydevops.online"
   type    = "A"
 
   alias {
-    name                   = aws_lb.ext-alb.dns_name
-    zone_id                = aws_lb.ext-alb.zone_id
+    name                   = aws_lb.dev-alb.dns_name
+    zone_id                = aws_lb.dev-alb.zone_id
     evaluate_target_health = true
   }
 }
 
 
-# create records for wordpress
+# create record for wordpress
 resource "aws_route53_record" "wordpress" {
   zone_id = data.aws_route53_zone.emydevops.zone_id
   name    = "wordpress.emydevops.online"
   type    = "A"
 
   alias {
-    name                   = aws_lb.ext-alb.dns_name
-    zone_id                = aws_lb.ext-alb.zone_id
+    name                   = aws_lb.dev-alb.dns_name
+    zone_id                = aws_lb.dev-alb.zone_id
     evaluate_target_health = true
   }
 }

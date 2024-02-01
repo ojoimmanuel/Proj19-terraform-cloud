@@ -1,28 +1,17 @@
+# The DB username
+variable "db-username" {}
 
-variable "db-username" {
-  type        = string
-  description = "The master user name"
-}
+# the DB password
+variable "db-password" {}
 
+# the DB security group
+variable "db-sg" {}
 
-variable "db-password" {
-  type        = string
-  description = "Master password"
-}
+// # declaring the first subnets for the subnets group
+// variable "db-subnets-1" {}
 
-variable "db-sg" {
-  type = list
-  description = "The DB security group"
-}
-
-variable "private_subnets" {
-  type        = list
-  description = "Private subnets fro DB subnets group"
-}
+// # declaring the second subnets for the subnets group
+// variable "db-subnets-2" {}
 
 
-variable "tags" {
-  description = "A mapping of tags to assign to all resources."
-  type        = map(string)
-  default     = {}
-}
+variable "private_subnets" {}
