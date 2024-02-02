@@ -12,6 +12,26 @@ enable_classiclink = "false"
 
 enable_classiclink_dns_support = "false"
 
+ami-web = "ami-06c888dc2a4c07b62"
+
+ami-bastion = "ami-05fd468b24f02c7ad"
+
+ami-nginx = "ami-0eaa4c6b745bc2dfd"
+
+keypair = "ec2-key"
+
+db-username = "emydevops"
+
+db-password = "proj17pbl"
+
+account_no = 635977375707
+
+# master-username = "emydevops"
+
+# master-password = "proj17pbl"
+
+
+
 # preferred_number_of_public_subnets = 2
 
 # preferred_number_of_private_subnets = 4
@@ -22,22 +42,3 @@ enable_classiclink_dns_support = "false"
 #   Managed-By      = "Terraform"
 #   Billing-Account = "1234567890"
 # }
-
-ami-web = "ami-03951dc3553ee499f"
-
-ami-bastion = "ami-03951dc3553ee499f"
-
-ami-nginx = "ami-03951dc3553ee499f"
-
-
-keypair = "ec2-key"
-
-account_no = 635977375707
-
-# master-username = "emydevops"
-
-# master-password = "proj17pbl"
-
-db-username = "emydevops"
-
-db-password = "proj17pbl"
